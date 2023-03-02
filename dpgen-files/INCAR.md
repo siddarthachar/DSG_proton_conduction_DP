@@ -1,0 +1,37 @@
+SYSTEM = GOH
+
+  GGA = PE
+  PREC = A
+  NCORE = 24
+#  ENCUT = 400
+#  LPLANE = .TRUE.
+KSPACING = 0.7
+KGAMMA = .TRUE.
+
+# Electronic Relaxation
+  LREAL = Auto
+  ALGO = VeryFast
+#  IALGO  = 48
+#  NELMIN = 5        ! Min # of electronic SC steps
+#  NELM   = 90       ! Max # of electronic SC steps
+#  NELMDL = 10       ! # of ELM steps
+#  EDIFF = 1E-04
+
+# Ionic Relaxation
+  NSW = 500
+  IBRION = 0
+#  ISIF 	= 0
+#  ISYM = 0          ! Usage of symmetry: 0 is no.
+  POTIM = 0.5
+  MDALGO = 2
+  SMASS=0
+  TEBEG = 1000
+  TEEND = 1000
+
+# DOS related values:
+  ISMEAR = 0
+  SIGMA = 0.05
+
+# Wrtie flags
+  LWAVE = .FALSE.
+  LCHARG = .FALSE.

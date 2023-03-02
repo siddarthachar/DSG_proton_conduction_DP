@@ -1,0 +1,28 @@
+{
+    "stages": [2,3,4],
+    "cell_type": "fcc",
+    "super_cell": [
+        1,
+        1,
+        1
+    ],
+    "elements": ["C","O","H"],
+    "from_poscar": true,
+    "from_poscar_path": "POSCAR.tri",
+    "potcars": [
+        "POTCAR.mono"
+    ],
+   
+    "md_incar": "INCAR.md",
+    "scale": [
+        1.0
+    ],
+    "skip_relax": true,
+    "pert_numb": 3,
+    "md_nstep": 50,
+    "pert_box": 0.03,
+    "pert_atom": 0.01,
+    "coll_ndata": 5000,
+    "type_map": ["C","O","H"],
+    "_comment": "that's all"
+}

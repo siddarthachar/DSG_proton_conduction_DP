@@ -1,0 +1,40 @@
+# graphane : Using T = 1000K: 1000 steps (Lot of temp fluctuation) 0.5ps
+
+units           metal
+boundary        p p p
+atom_style      atomic
+
+neighbor        2.0 bin
+neigh_modify    every 10 delay 0 check no
+
+read_data	dsg-1p.lmp
+mass 		1 12
+mass		2 16
+mass 		3 1
+
+pair_style	deepmd DSG_dp.pb
+pair_coeff	* *	
+
+velocity        all create 800.0 37278
+
+fix             1 all nvt temp 800.0 800.0 0.05
+timestep        0.00025
+thermo_style    custom step pe ke etotal temp press vol
+thermo          10
+dump		1 all custom 100 equil.lammpstrj id type xs ys zs
+
+run             40000
+write_data      data.equil
+
+unfix		1
+
+reset_timestep  0
+fix		2 all nvt temp 800.0 800.0 0.05
+timestep	0.00025
+
+thermo_style    custom step pe ke etotal temp press vol
+thermo          10
+dump            2 all custom 1 prod.lammpstrj id type xs ys zs
+
+run             500000
+write_data      data.prod

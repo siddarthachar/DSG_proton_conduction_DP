@@ -1,0 +1,261 @@
+{
+  "type_map": [
+    "C",
+    "O",
+    "H"
+  ],
+  "mass_map": [
+    12.0107,
+    16,
+    1.0078
+  ],
+  "init_data_prefix": "/bgfs/kjohnson/ska31/1DeePMD/paper-graphanol/",
+  "init_data_sys": [
+    "oneside/data/p+Hopping-1000K-1/raw-file-2924/",
+    "oneside/data/p+Hopping-800K-1/raw-file-2881/",
+    "oneside/data/p+Hopping-1000K-2/raw-file-1072/",
+    "oneside/data/p+Hopping-800K-2/raw-file-1115/",
+    "oneside/data/kat-hopping/raw-file-2000-test/",
+    "oneside/perturb/const-0.05-0.3/rotations/vasp-md/c0-r0/raw-500/",
+    "oneside/perturb/const-0.05-0.3/rotations/vasp-md/c1-r0/raw-500/",
+    "oneside/perturb/const-0.05-0.3/rotations/vasp-md/c2-r0/raw-500/",
+    "oneside/perturb/const-0.05-0.3/rotations/vasp-md/c3-r0/raw-500/",
+    "oneside/perturb/const-0.05-0.3/rotations/vasp-md/c4-r0/raw-500/",
+    "oneside/perturb/const-0.05-0.3/rotations/vasp-md/c5-r0/raw-500/",
+    "oneside/perturb/const-0.05-0.3/rotations/vasp-md/c6-r0/raw-500/",
+    "oneside/perturb/const-0.05-0.3/rotations/vasp-md/c7-r0/raw-500/",
+    "oneside/perturb/const-0.05-0.3/rotations/vasp-md/c9-r0/raw-500/",
+    "oneside/H2O-bond-breaking-sampling/single_point/raw-file/C24O12H25",
+    "doubleside/data/md-25_43",
+    "doubleside/data/md-22_2000",
+    "doubleside/data/md-21_200",
+    "doubleside/data/md-26_200",
+    "doubleside/data/md-9_200",
+    "doubleside/data/md-13_200",
+    "doubleside/data/md-14_200",
+    "doubleside/data/md-36_200",
+    "doubleside/data/md-7_2000",
+    "doubleside/data/md-23_237",
+    "doubleside/data/md-33_2000",
+    "doubleside/data/md-1_200",
+    "doubleside/data/md-6_200",
+    "doubleside/data/md-12_200",
+    "doubleside/data/md-29_200",
+    "doubleside/data/md-27_200",
+    "doubleside/data/md-20_200",
+    "doubleside/data/md-5_200",
+    "doubleside/data/md-11_200",
+    "doubleside/data/md-16_200",
+    "doubleside/data/md-2_200",
+    "doubleside/data/md-18_200",
+    "doubleside/data/md-31_2000",
+    "doubleside/data/md-32_200",
+    "doubleside/data/md-17_47",
+    "doubleside/data/md-15_195",
+    "doubleside/data/md-35_2000",
+    "doubleside/data/md-30_2000",
+    "doubleside/data/md-8_2000",
+    "doubleside/data/md-28_2000",
+    "doubleside/data/md-19_200",
+    "doubleside/data/md-3_200",
+    "doubleside/data/md-4_200",
+    "doubleside/data/md-10_200",
+    "doubleside/data/md-24_2000",
+    "doubleside/data/md-34_200"
+  ],
+
+  "sys_configs_prefix": "....../init/",
+  "sys_configs": [
+    ["/bgfs/kjohnson/ska31/1DeePMD/paper-graphanol/doubleside/struct/POSCAR.1"]
+  ],
+ 
+  "_comment": " that's all ",
+  "numb_models": 4,
+  "train_param": "input.json",
+  "default_training_param": {
+     "model": {
+            "type_map": [
+                "C",
+                "O",
+                "H"
+            ],
+            "descriptor": {
+                "type": "se_a",
+                "sel": [
+                    46,
+                    92,
+                    46
+                ],
+                "rcut_smth": 2.0,
+                "rcut": 6.0,
+                "neuron": [
+                    25,
+                    50,
+                    100
+                ],
+                "resnet_dt": true,
+                "axis_neuron": 16,
+                "seed": 1
+            },
+            "fitting_net": {
+                "neuron": [
+                    340,
+                    340,
+                    340
+                ],
+                "resnet_dt": false,
+                "seed": 1
+            }
+        },
+        "learning_rate": {
+            "type": "exp",
+            "start_lr": 0.001,
+            "decay_steps": 2000,
+            "decay_rate": 0.99
+        },
+        "loss": {
+            "start_pref_e": 0.02,
+            "limit_pref_e": 2,
+            "start_pref_f": 1000,
+            "limit_pref_f": 1,
+            "start_pref_v": 0.0,
+            "limit_pref_v": 0.0
+        },
+        "training": {
+            "set_prefix": "set",
+            "stop_batch": 1000000,
+            "batch_size": 1,
+            "disp_file": "lcurve.out",
+            "disp_freq": 1000,
+            "numb_test": 4,
+            "save_freq": 1000,
+            "save_ckpt": "model.ckpt",
+            "disp_training": true,
+            "time_training": true,
+            "profiling": false,
+            "profiling_file": "timeline.json",
+            "_comment": "that's all"
+        }
+  },
+  "model_devi_dt": 0.0005,
+  "model_devi_skip": 0,
+  "model_devi_f_trust_lo": 0.075,
+  "model_devi_f_trust_hi": 0.1,
+  "model_devi_clean_traj": false,
+  "model_devi_jobs": [
+    {
+      "sys_idx": [
+        0
+      ],
+      "temps": [
+        300, 400, 500, 600, 700, 800
+      ],
+      "press": [
+        1.0
+      ],
+      "trj_freq": 100,
+      "nsteps": 50000,
+      "ensemble": "nvt",
+      "_idx": "00"
+    },
+    {
+      "sys_idx": [
+        4
+      ],
+      "temps": [
+        300, 500, 600,700, 800, 900, 1000
+      ],
+      "press": [
+        1.0
+      ],
+      "trj_freq": 100,
+      "nsteps": 1000000,
+      "ensemble": "nvt",
+      "_idx": "01"
+    },
+    {
+      "sys_idx": [
+        4
+      ],
+      "temps": [
+        400, 600, 800, 1000
+      ],
+      "press": [
+        1.0
+      ],
+      "trj_freq": 100,
+      "nsteps": 1000000,
+      "ensemble": "nvt",
+      "_idx": "02"
+    },
+    {
+      "sys_idx": [
+        4
+      ],
+      "temps": [
+        700, 800, 900, 1000
+      ],
+      "press": [
+        1.0
+      ],
+      "trj_freq": 1000,
+      "nsteps": 1000000,
+      "ensemble": "nvt",
+      "_idx": "03"
+    },
+    {
+      "sys_idx": [
+        4
+      ],
+      "temps": [
+        700, 800, 900, 1000
+      ],
+      "press": [
+        1.0
+      ],
+      "trj_freq": 1000,
+      "nsteps": 1000000,
+      "ensemble": "nvt",
+      "_idx": "04"
+    },
+    {
+      "sys_idx": [
+        4
+      ],
+      "temps": [
+        700, 800, 900, 1000
+      ],
+      "press": [
+        1.0
+      ],
+      "trj_freq": 1000,
+      "nsteps": 2000000,
+      "ensemble": "nvt",
+      "_idx": "05"
+    },
+    {
+      "sys_idx": [
+        4
+      ],
+      "temps": [
+        700, 800, 900, 1000
+      ],
+      "press": [
+        1.0
+      ],
+      "trj_freq": 1000,
+      "nsteps": 2000000,
+      "ensemble": "nvt",
+      "_idx": "06"
+    }
+  ],
+  "fp_style": "vasp",
+  "shuffle_poscar": false,
+  "fp_task_max": 1500,
+  "fp_task_min": 50,
+  "fp_pp_path": ".",
+  "fp_pp_files": [
+    "POTCAR.C", "POTCAR.O", "POTCAR.H"
+  ],
+  "fp_incar": "/bgfs/kjohnson/ska31/1DeePMD/paper-graphanol/doubleside/dpgen/trial-1/INCAR_single"
+}
